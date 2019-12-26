@@ -1,0 +1,20 @@
+{
+  "name": "vuen-popper2",
+  "version": "1.0.0",
+  "description": "vue popper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vuepress": "^1.2.0"
+  },
+  "dependencies": {
+    "element-ui": "^2.13.0",
+    "popper.js": "^1.16.0"
+  }
+}
