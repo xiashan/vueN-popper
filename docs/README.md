@@ -9,7 +9,7 @@ features:
   details: Based on Popper.js
 - title: Vue
   details: Vue Component
-- title: Multiple
-  details: Support Multiple
+- title: Complex
+  details: Appropriate For Complex Popover
 footer: Copyright © 2020-present xs
 ---

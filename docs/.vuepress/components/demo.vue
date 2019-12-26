@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <span @click="handlePopClick('app')" ref="app"> Cleaner </span>
+  <div style="margin-top: 20px;">
+    <button type="button" class="el-button el-button--primary" @click="handlePopClick('app')" ref="app">点我出现弹层</button>
   </div>
 </template>
 

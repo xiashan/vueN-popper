@@ -6,13 +6,13 @@
 #### NPM
 
 ``` bash
-npm install vue-popperjs --save
+npm install vuen-popper --save
 ```
 
 #### Yarn
 
 ``` bash
-yarn add vue-popperjs
+yarn add vuen-popper
 ```
 
 ## Development Setup
