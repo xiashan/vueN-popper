@@ -1,6 +1,8 @@
 # vueN-popper
 > a vue component for complex popover, based on <a href="https://popper.js.org/">popper.js</a>
 
+document: https://xiashan.github.io/vueN-popper/
+
 ## Install
 
 #### NPM
