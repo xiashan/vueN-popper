@@ -9,13 +9,10 @@ import PopperJS from 'popper.js';
  */
 export default {
   props: {
-    transformOrigin: {
-      type: [Boolean, String],
-      default: true
-    },
-    boundariesSelector: String,
+    value: Boolean,
     reference: {},
     popper: {},
+    boundariesSelector: String,
     disabled: {
       type: Boolean,
       default: false
@@ -44,14 +41,19 @@ export default {
       popperElm: null,
       popperOptions: {
         placement: 'bottom',
-        computeStyle: {
-          gpuAcceleration: false
-        }
       }
     };
   },
 
   watch: {
+    value: {
+      immediate: true,
+      handler(val) {
+        this.showPopper = val;
+        this.$emit('input', val);
+      }
+    },
+
     showPopper(val) {
       if (this.disabled) return;
       if (val) {
@@ -65,6 +67,7 @@ export default {
           this.popperJS.disableEventListeners();
         }
         this.$emit('hide', this);
+        this.destroyPopper();
       }
     },
 
@@ -95,7 +98,7 @@ export default {
       }
 
       if (this.visibleArrow) {
-        this.appendArrow(popper);
+        this._appendArrow(popper);
       }
       if (this.appendToBody) {
         document.body.appendChild(popper);
@@ -129,23 +132,15 @@ export default {
         this.popperJS.scheduleUpdate();
       } else {
         this.createPopper();
+        this.popperJS.scheduleUpdate();
       }
-    },
-
-    doDestroy(forceDestroy) {
-      if (!this.popperJS || (this.showPopper && !forceDestroy)) {
-        return;
-      }
-      this.popperJS.destroy();
-      this.popperJS = null;
     },
 
     destroyPopper() {
-      this.showPopper = false;
-      this.doDestroy();
+      this._doDestroy();
     },
 
-    appendArrow(element) {
+    _appendArrow(element) {
       let hash;
       if (this.appended) {
         return;
@@ -166,12 +161,20 @@ export default {
       arrow.setAttribute('x-arrow', '');
       arrow.className = 'popper__arrow';
       element.appendChild(arrow);
+    },
+
+    _doDestroy(forceDestroy) {
+      if (!this.popperJS || (this.showPopper && !forceDestroy)) {
+        return;
+      }
+      this.popperJS.destroy();
+      this.popperJS = null;
     }
   },
 
   beforeDestroy() {
-    this.doDestroy(true);
-    // appendToBody: true
+    this._doDestroy(true);
+    // appendToBody 为 true
     if (this.popperElm && this.popperElm.parentNode === document.body) {
       document.body.removeChild(this.popperElm);
     }

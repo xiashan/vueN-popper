@@ -86,3 +86,25 @@ export default {
 ```
 
 <demo />
+
+
+
+## Props
+
+| Props               | Type      | Default                       | Description            |
+| --------------------|:----------| ------------------------------|------------------------|
+| reference           | Object    |                               | 定位popper的参考         |
+| popper              | Object    |                               | 弹窗的对象               |
+| boundariesSelector  | String    |                               | 弹窗的边界，默认窗口       |
+| disabled            | Boolean   | false                         | 点击不显示popper         |
+| visibleArrow        | Boolean   | true                          |                        |
+| appendToBody        | Boolean   | true                          |                        |
+| options             | Object    |                               |  {<br>placement: 'bottom',<br>positionFixed: false,<br>eventsEnabled: true,<br>removeOnDestroy: false,<br>onCreate: function,<br>onUpdate: function,<br>modifiers: {}<br>}<br>具体参数参考popper.js                      |
+
+
+## Events
+| Name            | Params                   | Description  |
+| ----------------|:-------------------------|--------------|
+| show            |                          | show popper  |
+| hide            |                          | hide popper  |
+| created         |                          | create popper|
